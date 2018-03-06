@@ -1,13 +1,29 @@
 {
-  "pages": [
+  "pages":[
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/test/test"
+    "pages/logs/logs"
   ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#87CEFA",
-    "navigationBarTitleText": "WMHRedPacket",
-    "navigationBarTextStyle": "white"
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#FF7256",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的记录"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "余额提现"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "常见问题"
+      }
+    ]
   }
+
 }
