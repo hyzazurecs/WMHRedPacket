@@ -1,0 +1,52 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">WMH_RedPacket</view>
+        <view class="page__desc">WeUI 是一个很厉害的东西。</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="kind-list">
+          <block>
+            <view class="kind-list__item">
+              <view class="weui-flex kind-list__item-hd">
+                <view class="" ><text decode='{{true}}'>红包标题&nbsp;&nbsp;</text></view>
+                <input bindinput="titleInput" class="weui-input weui-flex__item" placeholder='请输入红包标题'></input>
+              </view>
+            </view>
+          </block>
+
+          <block>
+            <view class="kind-list__item">
+              <view class="weui-flex kind-list__item-hd">
+                <view class=""><text decode='{{true}}'>红包金额&nbsp;&nbsp;</text></view>
+
+                <radio-group  class="weui-flex" wx:if="{{chooseMoney}}">
+                  <radio class="weui-flex__item" wx:for="{{money}}" wx:key="value" checked="{{item.chosen}}" bindtap='checkMore' id="{{item.id}}">
+                      {{item.display}}
+                  </radio>
+                </radio-group>
+
+                <input wx:if="{{!chooseMoney}}" bindinput="priceInput" class="weui-input weui-flex__item" placeholder='请输入红包金额' type="number"></input>
+                
+              </view>
+            </view>
+          </block>
+
+          <block>
+            <view class="kind-list__item">
+              <view class="weui-flex kind-list__item-hd">
+                <view class="" ><text decode='{{true}}'>红包份数&nbsp;&nbsp;</text></view>
+                <input type="number" class="weui-input weui-flex__item"  bindinput="numsInput" placeholder='请输入红包份数' ></input>
+              </view>
+            </view>
+          </block>
+
+          <button class="weui-btn" type="warn" bindtap='buttonTap'>发布红包</button>
+
+        </view>
+
+        
+    </view>
+    <view class="page__ft">
+         <image src="images/icon_footer.png" style="width: 84px; height: 19px;"></image> 
+    </view>
+</view>
