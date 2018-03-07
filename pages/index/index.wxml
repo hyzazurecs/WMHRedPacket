@@ -68,7 +68,7 @@
               <input type='number' placeholder='填写数量' class='hotInput fr'
                      bindinput='NumberInput'></input>
             </view>
-
+ 
             <view class="{{houBaoStyle==3?'server3':'server'}}">需支付￥0.0服务费,优先使用余额</view>
             <navigator url="../draw/draw?houBaoStyle={{houBaoStyle}}"
             class='VoiceBtn' bindtap='toShare'>开始绘画</navigator>

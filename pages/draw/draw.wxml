@@ -18,7 +18,7 @@
     bindtouchstart="touchStart" 
     bindtouchmove="touchMove"
     bindtouchend="touchEnd"/>
-  <button>发布</button> 
+  <button class='VoiceBtn' disabled='{{btnEnable}}' bindtap='btnClick'>发布</button> 
   <view class="delete-session" bindtap="handleDeleteTap">
     <image class="delete" src="../../image/delete.svg" />
   </view>

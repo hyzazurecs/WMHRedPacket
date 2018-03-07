@@ -23,7 +23,14 @@ let initial = false
 
 Page({
 
-  data: pageData,
+  data:{
+    pageData,
+    btnEnable: true
+  } ,
+
+  btnClick: function(e){
+    console.log("clicked")
+  },
 
   /**
    * 生命周期函数--监听页面加载

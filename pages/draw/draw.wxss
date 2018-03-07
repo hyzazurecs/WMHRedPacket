@@ -60,3 +60,16 @@
 .canvas {
   background-color: #ffffff;
 }
+
+.VoiceBtn{
+  width:300rpx;
+  height:80rpx;
+  line-height: 70rpx;
+  background: #e73b58;
+  border-radius:35rpx;
+  font-size:28rpx;
+  color:#fff;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 35rpx;
+}
