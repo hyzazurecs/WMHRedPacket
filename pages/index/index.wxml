@@ -1,52 +1,82 @@
-<view class="page">
-    <view class="page__hd">
-        <view class="page__title">WMH_RedPacket</view>
-        <view class="page__desc">WeUI 是一个很厉害的东西。</view>
+<!--index.wxml-->
+<view class="container">
+ <view class='com'>
+ <!--控制导航  -->
+  <view class='nav'>
+    <view class="nav_box" >
+      <view bindtap='ChangeTab' data-id="1"
+            style="{{houBaoStyle==1?'border-bottom:2px solid #fff':''}}">
+        口令红包
+      </view>
+       <view bindtap='ChangeTab' data-id="2"
+            style="{{houBaoStyle==2?'border-bottom:2px solid #fff':''}}">
+        倾听红包
+      </view>
+       <view bindtap='ChangeTab' data-id="3"
+            style="{{houBaoStyle==3?'border-bottom:2px solid #fff':''}}">
+        剧本红包
+      </view>
+      
     </view>
-    <view class="page__bd page__bd_spacing">
-        <view class="kind-list">
-          <block>
-            <view class="kind-list__item">
-              <view class="weui-flex kind-list__item-hd">
-                <view class="" ><text decode='{{true}}'>红包标题&nbsp;&nbsp;</text></view>
-                <input bindinput="titleInput" class="weui-input weui-flex__item" placeholder='请输入红包标题'></input>
+  </view>
+    <!--容器  -->
+  <!-- {{currentTab==1?'dispaly:block;':'display:none'}} -->
+    <view class="HotMoney_box">
+        <view class='watchword' 
+              style="">
+          <view class='header' bindtap='tomyRecord'>
+            <image src='{{userInfo.avatarUrl}}' mode='widthFix' class='header_size'></image>
+          </view>
+          <view class="setHotMoney">
+          <!--口令红包  -->
+            <view class='setHotMoney_detail1' 
+                  style="{{houBaoStyle==1?'display:block':'display:none'}}">
+              <view class='setHotMoney_name1 fl' >红包标题</view>
+              <input type='text' placeholder='谢谢老板' class='hotInput1 fr' bindinput='koulingInput'></input>
+            </view>
+          <!--倾听红包  -->
+            <view class='setHotMoney_detail1' 
+                  style="{{houBaoStyle==2?'display:block':'display:none'}}">
+              <view class='qingting ' bindtouchstart='startVoice'>
+              <!-- <text class="iconfont icon-huatong paddLeft15"> </text> -->
+              <image src='../image/huatong.png' mode='widthFix' style='width:30rpx;float:left; margin-left:15rpx;margin-right:15rpx;margin-top:10rpx;' ></image>
+              <view style='display:inline-block;margin-top:-10rpx;height:64rpx;line-height:64rpx;'>长按录入你对TA想说的话</view>
               </view>
             </view>
-          </block>
 
-          <block>
-            <view class="kind-list__item">
-              <view class="weui-flex kind-list__item-hd">
-                <view class=""><text decode='{{true}}'>红包金额&nbsp;&nbsp;</text></view>
-
-                <radio-group  class="weui-flex" wx:if="{{chooseMoney}}">
-                  <radio class="weui-flex__item" wx:for="{{money}}" wx:key="value" checked="{{item.chosen}}" bindtap='checkMore' id="{{item.id}}">
-                      {{item.display}}
-                  </radio>
-                </radio-group>
-
-                <input wx:if="{{!chooseMoney}}" bindinput="priceInput" class="weui-input weui-flex__item" placeholder='请输入红包金额' type="number"></input>
-                
-              </view>
+          <!--剧本红包  -->
+            <view class='setHotMoney_detail3' 
+                  style="{{houBaoStyle==3?'display:block':'display:none'}}">
+              <view class='qingting' bindtouchstart='startVoice'>
+              <image src='../image/huatong.png' mode='widthFix' style='width:30rpx;float:left; margin-left:15rpx;margin-right:15rpx;margin-top:10rpx;' ></image>
+              长按录入你对TA想说的话</view>
+              <input type='text' placeholder='输入您问题的答案？' class='answer' bindinput='jubenAnswerInput'></input>
             </view>
-          </block>
 
-          <block>
-            <view class="kind-list__item">
-              <view class="weui-flex kind-list__item-hd">
-                <view class="" ><text decode='{{true}}'>红包份数&nbsp;&nbsp;</text></view>
-                <input type="number" class="weui-input weui-flex__item"  bindinput="numsInput" placeholder='请输入红包份数' ></input>
-              </view>
+            <view class='shuoming'>
+              {{houBaoStyle==1?shuoming1:''}}
+              {{houBaoStyle==2?shuoming2:''}}
+              {{houBaoStyle==3?shuoming3:''}}
             </view>
-          </block>
+            <view class='setHotMoney_detail'>
+              <view class='setHotMoney_name fl' >赏金（元）</view>
+              <input type='number' placeholder='填写金额' class='hotInput fr'
+                     bindinput='MoneyInput'></input>
+            </view>
+            <view class='setHotMoney_detail'>
+              <view class='setHotMoney_name fl' >数量（个）</view>
+              <input type='number' placeholder='填写数量' class='hotInput fr'
+                     bindinput='NumberInput'></input>
+            </view>
 
-          <button class="weui-btn" type="warn" bindtap='buttonTap'>发布红包</button>
+            <view class="{{houBaoStyle==3?'server3':'server'}}">需支付￥0.0服务费,优先使用余额</view>
+            <navigator url="../draw/draw?houBaoStyle={{houBaoStyle}}"
+            class='VoiceBtn' bindtap='toShare'>开始绘画</navigator>
+          </view>
+
 
         </view>
+    </view>
 
-        
-    </view>
-    <view class="page__ft">
-         <image src="images/icon_footer.png" style="width: 84px; height: 19px;"></image> 
-    </view>
+ </view>
 </view>

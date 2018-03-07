@@ -1,138 +1,107 @@
+//index.js
+//获取应用实例
+const app = getApp()
+
 Page({
   data: {
-    chooseMoney : true,
-    title: "",
-    price: 0,
-    nums: 0,
-
-    money: [
-      {
-        id :0,
-        value: 5,
-        chosen: true,
-        display: "5 "
-      },
-      {
-        id:1,
-        value: 10,
-        chosen: false,
-        display: "10"
-      },
-      {
-        id:2,
-        value: 20,
-        chosen: false,
-        display: "20"
-      },
-      {
-        id:3,
-        value: -1,
-        chosen: false,
-        display: "···"
+    houBaoStyle:1,
+    userInfo:[],
+    shuoming1:'小伙伴们说对口令就能获得随即打赏',
+    shuoming2:'好友听完你说的话就能领取赏金',
+    shuoming3:'好友念出你的答案就能领取赏金',
+    kongling:'',
+    Money:'',
+    Number:'',
+    answer:'',
+  },
+  //事件处理函数
+  ChangeTab:function(e){
+    var that = this;
+    console.log("currentTab")
+    var currentTab = e.currentTarget.dataset.id;
+    that.setData({
+      houBaoStyle: currentTab,
+    })
+  },
+  onLoad: function () {
+    var that = this;
+    wx.getUserInfo({
+      success:function(user){
+        console.log(user)
+        that.setData({
+          userInfo:user.userInfo,
+        })
       }
-    ]
-
-  },
-
-  
-
-  checkMore: function(e){
-    let curId= e.currentTarget.id;
-
-    for (let i = 0 ; i < this.data.money.length; i ++){
-      this.data.money[i].chosen = false;
-    }
-
-    this.data.money[curId].chosen = true;
-
-    if (curId != 3){
-      this.data.price = this.data.money[curId].value;
-    }
-
-    if (curId == 3){
-      this.setData({
-        chooseMoney: false,
-        price: 0
-      })
-    }
-  },
-
-  buttonTap: function(e){
-    let cur_title = this.data.title;
-    let cur_price = this.data.price;
-    let cur_nums = this.data.nums;
-
-
-    if (cur_title == "" ){
-      openAlert("标题不得为空");
-      return;
-    } else if( cur_price == 0){
-      openAlert("红包金额不得为空");
-      return;
-    } else if ( cur_nums == 0 ){
-      openAlert("红包份数不得为空");
-      return;
-    }
-
-    let push_data = {
-      title: cur_title,
-      money: cur_price,
-      nums : cur_nums
-    }
-
-    console.log(push_data);
-
-    
-
-
-  },
-
-  titleInput: function(e){
-    let title_value = e.detail.value;
-    this.setData({
-      title: title_value
-    });
-  },
-
-  numsInput: function(e){
-    var regNum = new RegExp('^[0-9]*$');
-    var result = regNum.test(e.detail.value);
-
-    if (!result){
-      openAlert("请输入数字");
-      
-    }
-
-    console.log(result);
-
-    let nums_value = e.detail.value;
-    this.setData({
-      nums: nums_value
-    });
-  },
-
-  priceInput: function(e){
-    let price_value = e.detail.value;
-    this.setData({
-      price: price_value
-    });
+    })
   },
 
 
-  
+  // 获取语音
+  startVoice: function () {
+    console.log("开始录音");
+    wx.startRecord({
+      success: function (res) {
+        console.log("录音结束")
+        var tempFilePath = res.tempFilePath;
+        console.log(tempFilePath);
 
-  
-});
+      },
+      fail: function () {
 
-let openAlert = function (alert_content) {
-  let this_content = alert_content;
-  wx.showModal({
-    content: this_content,
-    showCancel: false,
-    success: function (res) {
-      if (res.confirm) {
-        console.log('用户点击确定')
       }
-    }
-  });
-}
+    })
+    setTimeout(function () {
+      wx.stopRecord({
+        success: function (res) {
+          console.log(res)
+        }
+      });
+    }, 10000)
+  },
+  endstartVoice: function () {
+    wx.stopRecord({
+      success: function (res) {
+        console.log(res)
+      }
+    });
+  },
+
+  // 跳转链接
+
+  tomyRecord:function(){
+    var that = this;
+    wx.navigateTo({
+      url: './mRecord/myRecord',
+    })
+
+  },
+  // 获取页面填入的值
+  koulingInput:function(e){
+    var that = this;
+    console.log(e.detail.value)
+    that.setData({
+      kouling:e.target.value,
+    })
+  },
+  MoneyInput:function(e){
+    var that = this;
+    console.log(e.detail.value)
+    that.setData({
+      Money: e.target.value,
+    })
+  },
+  NumberInput: function (e) {
+    var that = this;
+    console.log(e.detail.value)
+    that.setData({
+      Number: e.target.value,
+    })
+  },
+  jubenAnswerInput:function(e){
+    var that = this;
+    console.log(e.detail.value);
+    that.setData({
+      answer:e.detail.value,
+    })
+  },
+})

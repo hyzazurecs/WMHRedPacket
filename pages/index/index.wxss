@@ -1,15 +1,131 @@
-/*!
- * WeUI v1.1.1 (https://github.com/weui/weui-wxss)
- * Copyright 2017 Tencent, Inc.
- * Licensed under the MIT license
- */
-.weui-flex{-webkit-box-align:center;-webkit-align-items:center;align-items:center}.weui-cells{margin-top:0;opacity:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);-webkit-transition:.3s;transition:.3s}.weui-cells:after,.weui-cells:before{display:none}.weui-cells_show{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}.weui-cell:before{right:15px}.kind-list__item{margin:10px 0;background-color:#fff;border-radius:2px;overflow:hidden}.kind-list__item:first-child{margin-top:0}.kind-list__img{width:30px;height:30px}.kind-list__item-hd{padding:20px;-webkit-transition:opacity .3s;transition:opacity .3s}.kind-list__item-hd_show{opacity:.4}.kind-list__item-bd{height:0;overflow:hidden}.kind-list__item-bd_show{height:auto}
+/**index.wxss**/
+Page{
+  background:#f3f5fa;
+  font-family:'PingFang SC Medium',  "微软雅黑";
+}
+.nav{
+  height:80rpx;
+  background: #e73b58;
+}
+.nav_box{
+  overflow: hidden;
+  width:600rpx;
+  height:60rpx;
+  margin:0 auto;
+  line-height: 60rpx;
+  background:#e73b58;
+  color:#fff;
+  display:flex;
+  justify-content: space-around;
+}
+.HotMoney_box{
+  overflow: hidden;
+  height: 1420rpx;
+  width:710rpx;
+  margin:0 auto;
+  
+}
+.watchword{
+  /* overflow: hidden; */
+  width:710rpx;
+  height:534rpx;
+  background:#fff;
+   position:relative; 
+  margin-top:90rpx;
+  
+}
+.header{
+  width:110rpx;
+  height:110rpx;
+  margin:0 auto;
+  margin-top:-55rpx;
+  border-radius:50%;
+  position:absolute;
+  top:0;
+  left:50%;
+  margin-left:-55rpx;
+  z-index:99;
+}
+.header_size{
+  width:110rpx;
+  border-radius:50%;
+  border:2px solid #fff;
+}
+.setHotMoney{
+  padding:0 55rpx;
+  width:600rpx;
+  /* overflow: hidden; */
+  padding-top:70rpx;
+}
+.setHotMoney_detail{
+  height:65rpx;
+  line-height:65rpx;
+  font-weight:bold;
+  font-size:28rpx;
+}
+.hotInput{
+  width:450rpx;
+  border-bottom:1px solid #ccc;
+  margin-top:5rpx;
+}
+.shuoming{
+  height:50rpx;
+  line-height: 50rpx;
+  font-size:20rpx;
+  color:#999;
+}
+.server{
+  width:600rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  color:#999;
+  text-align: center;
+}
+.VoiceBtn{
+  width:300rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  background: #e73b58;
+  border-radius:35rpx;
+  font-size:28rpx;
+  line-height: 70rpx;
+  color:#fff;
+  text-align: center;
+  align-self: center;
+  margin-left: 140rpx ;
+}
 
-.placeholder{
-    padding: 0 10px;
-    text-align: center;
-    background-color: #FFF;
-    height: 2.3em;
-    line-height: 2.3em;
-    color: #cfcfcf;
+
+.setHotMoney_detail1{
+  height:65rpx;
+  line-height:65rpx;
+  font-weight:bold;
+  font-size:28rpx;
+  margin-top:15rpx;
+}
+.hotInput1{
+  width:450rpx;
+  border-bottom:1px solid #ccc;
+  margin-top:5rpx;
+}
+
+.answer{
+  width:350rpx;
+  border-bottom:1rpx solid #ccc;
+  font-size:20rpx;
+  color:#999;
+}
+.setHotMoney_detail3{
+  height:105rpx;
+  line-height:65rpx;
+  font-weight:bold;
+  font-size:28rpx;
+  margin-top:15rpx;
+}
+.server3{
+  width:600rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  color:#999;
+  text-align: center;
 }
