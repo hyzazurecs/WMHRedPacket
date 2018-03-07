@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.91",
-	"appid": "wx451ae423e4764593",
-	"projectname": "Wechat_app",
+	"appid": "wx7475001116eabd77",
+	"projectname": "wmhReadocket",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

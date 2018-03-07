@@ -12,8 +12,6 @@ var pageData = {
   recommends: null
 }
 
-var finsin = false
-
 let stencils = null
 
 var arrayX = []
@@ -23,14 +21,7 @@ let initial = false
 
 Page({
 
-  data:{
-    pageData,
-    btnEnable: true
-  } ,
-
-  btnClick: function(e){
-    console.log("clicked")
-  },
+  data: pageData,
 
   /**
    * 生命周期函数--监听页面加载
@@ -125,23 +116,28 @@ Page({
     }
 
     var that = this
+    console.log("kakakakaka")
 
     Cloud.run('matchDraw', options).then(function (res) {
-
-      const array = JSON.parse(res)
-
-      const flag = array[0]
-
+      console.log("sssss")
+      console.log(res[0])
+      // const array = JSON.parse(res)
+      const flag = res[0]
+      
+      
+      
       if (flag == 'SUCCESS') {
-        const inks = array[1][0][1]
-
-        const results = achievePath(inks)
-
+        const inks = res[1][0][1]
+        console.log(inks)
+        const ress = achievePath(inks)
+        const results = ress.slice(0,9)
+        console.log(results)
         that.setData({
           recommends: results
         })
 
         if (!initial) {
+          console.log("lalalal")
           wx.showToast({
             title: app.globalData.language.longPressToast,
             duration: 2000,
@@ -151,6 +147,7 @@ Page({
           })
         }
       }
+      
 
     }, function (error) {
       console.log(error)
@@ -189,8 +186,23 @@ Page({
     arrayX = []
     arrayY = []
     arrayTime = []
+  },
+
+  ls: function (e) {
+    this.context.clearRect(0, 0, this.data.width, this.data.height)
+    console.log(e.target.id)
+    this.context.draw()
+    this.context.drawImage(e.target.id,0,0,200,200)
+    console.log("a")
+
+    arrayX = []
+    arrayY = []
+    arrayTime = []
   }
+
 })
+
+
 
 function float2int(value) {
   return value | 0
