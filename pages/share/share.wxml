@@ -1,0 +1,36 @@
+<!--pages/share/share.wxml-->
+<view class='container'>
+  <view class='con'>
+    <view class='bg_pic' style="background:url('../image/bg.png') no-repeat;background-size:750rpx 630rpx;">
+      <view class='share_box'>
+        <image src='{{userInfo.avatarUrl}}' mode='widthFix' class='header_logo'></image>
+      </view>
+      <view class="share_box">
+        <view class='kouling'>发了一个画图红包</view>
+      </view>
+      <view class="share_box">
+        <view class='yuyin' style="{{houBaoStyle==1?'display:flex':'display:none'}}"> 画图红包 </view>
+        <view class="yuyin" style="{{houBaoStyle==2?'display:flex':'display:none'}}">
+          <view class='qingTing'>
+            <text class="iconfont icon-bofang paddLeft15"> </text> 点此收听真心话领取赏金
+          </view>
+        </view>
+        <view class="yuyin" style="{{houBaoStyle==3?'display:flex':'display:none'}}">
+        </view>
+      </view>
+      <view class='share_box_ju'>
+        <image src='{{userInfo.avatarUrl}}' mode='widthFix' class='juhuama'></image>
+      </view>
+    </view>
+    <view class='share_box marginTop'>
+      <view class='btn_box'>
+        <navigator class='btn_Btn' url='../packet/packet?houBaoStyle={{houBaoStyle}}'>转发到好友或着群里</navigator>
+        <view class='btn_Btn btn_top'>生成朋友圈分享图</view>
+        <view class='btn_Shi'>快去分享给你的小伙伴 -></view>
+      </view>
+    </view>
+
+
+
+  </view>
+</view>

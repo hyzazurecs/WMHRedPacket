@@ -4,19 +4,6 @@
  <!--控制导航  -->
   <view class='nav'>
     <view class="nav_box" >
-      <view bindtap='ChangeTab' data-id="1"
-            style="{{houBaoStyle==1?'border-bottom:2px solid #fff':''}}">
-        口令红包
-      </view>
-       <view bindtap='ChangeTab' data-id="2"
-            style="{{houBaoStyle==2?'border-bottom:2px solid #fff':''}}">
-        倾听红包
-      </view>
-       <view bindtap='ChangeTab' data-id="3"
-            style="{{houBaoStyle==3?'border-bottom:2px solid #fff':''}}">
-        剧本红包
-      </view>
-      
     </view>
   </view>
     <!--容器  -->
@@ -30,33 +17,13 @@
           <view class="setHotMoney">
           <!--口令红包  -->
             <view class='setHotMoney_detail1' 
-                  style="{{houBaoStyle==1?'display:block':'display:none'}}">
+                  style="display:block">
               <view class='setHotMoney_name1 fl' >红包标题</view>
-              <input type='text' placeholder='谢谢老板' class='hotInput1 fr' bindinput='koulingInput'></input>
-            </view>
-          <!--倾听红包  -->
-            <view class='setHotMoney_detail1' 
-                  style="{{houBaoStyle==2?'display:block':'display:none'}}">
-              <view class='qingting ' bindtouchstart='startVoice'>
-              <!-- <text class="iconfont icon-huatong paddLeft15"> </text> -->
-              <image src='../image/huatong.png' mode='widthFix' style='width:30rpx;float:left; margin-left:15rpx;margin-right:15rpx;margin-top:10rpx;' ></image>
-              <view style='display:inline-block;margin-top:-10rpx;height:64rpx;line-height:64rpx;'>长按录入你对TA想说的话</view>
-              </view>
-            </view>
-
-          <!--剧本红包  -->
-            <view class='setHotMoney_detail3' 
-                  style="{{houBaoStyle==3?'display:block':'display:none'}}">
-              <view class='qingting' bindtouchstart='startVoice'>
-              <image src='../image/huatong.png' mode='widthFix' style='width:30rpx;float:left; margin-left:15rpx;margin-right:15rpx;margin-top:10rpx;' ></image>
-              长按录入你对TA想说的话</view>
-              <input type='text' placeholder='输入您问题的答案？' class='answer' bindinput='jubenAnswerInput'></input>
+              <input type='text' placeholder='谢谢老板' class='hotInput1 fr' bindinput='titleInput'></input>
             </view>
 
             <view class='shuoming'>
-              {{houBaoStyle==1?shuoming1:''}}
-              {{houBaoStyle==2?shuoming2:''}}
-              {{houBaoStyle==3?shuoming3:''}}
+              {{description}}
             </view>
             <view class='setHotMoney_detail'>
               <view class='setHotMoney_name fl' >赏金（元）</view>
@@ -69,11 +36,10 @@
                      bindinput='NumberInput'></input>
             </view>
  
-            <view class="{{houBaoStyle==3?'server3':'server'}}">需支付￥0.0服务费,优先使用余额</view>
-            <navigator url="../draw/draw?houBaoStyle={{houBaoStyle}}"
+            <view class="server">需支付￥0.0服务费,优先使用余额</view>
+            <navigator url="../draw/draw"
             class='VoiceBtn' bindtap='toShare'>开始绘画</navigator>
           </view>
-
 
         </view>
     </view>

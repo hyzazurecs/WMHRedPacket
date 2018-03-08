@@ -1,0 +1,208 @@
+/* pages/packet/packet.wxss */
+@import '../../style/font.wxss';
+Page{
+   background:#f3f5fa; 
+}
+.topBox{
+  background:#e73b58;
+  padding:0 30rpx;
+}
+.con{
+  overflow: hidden;
+  
+}
+.share_box{
+  width:690rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.header_logo{
+  border-radius:15rpx;
+}
+.kouling{
+  width:690rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  font-size:30rpx;
+  color:#fde2b3;
+  text-align: center;
+}
+.yuyin{
+  width:690rpx;
+  height:136rpx;
+  line-height:136rpx;
+  font-size:30rpx;
+  color:#fde2b3;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: middle;
+}
+.juhuama{
+  width:245rpx;
+  height:245rpx;
+  border-radius:50%;
+}
+.share_box_ju{
+  width:690rpx;
+  border-radius:50%;
+  /* display: flex;
+  justify-content: space-around; */
+}
+.marginTop{
+  margin-top:45rpx;
+}
+.btn_box{
+  padding-top:20rpx;
+  width:690rpx;
+  height:330rpx;
+  background:#fff;
+  border-radius:15rpx;
+}
+.btn_Btn{
+  width:625rpx;
+  height:80rpx;
+  text-align:center;
+  line-height: 80rpx;
+  font-size:28rpx;
+  background:#31bd48;
+  color:#fff;
+  margin:15rpx auto;
+  border-radius:15rpx;
+}
+.btn_top{
+  margin-top:30rpx;
+}
+.btn_Shi{
+  width:625rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin-top:30rpx;
+}
+.showLing{
+  width:600rpx;
+  height:90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color:#fff;
+  background: #31bd48;
+  border-radius:45rpx;
+  margin-top:50rpx;
+}
+.caozuoShare{
+  width:690rpx;
+  height:90rpx;
+  display: flex;
+  justify-content: space-around;
+  color:#fff;
+  line-height:90rpx;
+ font-size:28rpx;
+
+}
+.hotMoneyNum{
+  width:680rpx;
+  height:84rpx;
+  line-height: 84rpx;
+  margin: 0 auto;
+}
+.jilu{
+  width:750rpx;
+  color:#7785a6;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin-top:130rpx;
+}
+.weilingqu{
+  width:750rpx;
+  color:#999;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin-top:10rpx;
+}
+.moneyNum{
+  font-size:80rpx;
+  color:#fde2b3;
+  width:100%;
+  text-align: center;
+}
+.fontSize{
+  font-size:24rpx;
+}
+.peopleMoney{
+  width:700rpx;
+  height:160rpx;
+  background:#fff;
+  margin:0 auto;
+  margin-bottom:10rpx;
+  border-radius:10rpx;
+}
+.peopleMoney_Left{
+  width:110rpx;
+  height:110rpx;
+  padding:10rpx 25rpx;
+}
+.peopleMoney_center{
+  width:300rpx;
+  height:110rpx;
+  padding:25rpx 0rpx;
+}
+.people_NickName{
+  width:300rpx;
+  height:40rpx;
+  line-height: 40rpx;
+
+}
+.yuying_time{
+  width:170rpx;
+  height:70rpx;
+  background: #f1f3f6;
+  border:1rpx solid #ccc;
+  border-radius:10rpx;
+  line-height: 70rpx;
+  font-size:30rpx;
+  padding-left:8rpx;
+}
+.yuying_time_right{
+  width:170rpx;
+  height:70rpx;
+  font-size:30rpx;
+  text-align: right;
+  line-height:35rpx;
+  padding-right:15rpx;
+  margin-top:65rpx;
+}
+.right_Num{
+  line-height: 35rpx;
+  color:#333;
+  font-weight:bold;
+
+}
+.right_time{
+  font-size:24rpx;
+  color:#999;
+}
+.ChangeHot{
+  width:100%;
+  height:240rpx;
+}
+.marTop{
+  margin-top:30rpx;
+  margin-bottom:40rpx;
+  padding-left:15rpx;
+  font-size:24rpx;
+}
+.marTop3{
+  margin-top:30rpx;
+  /* margin-bottom:40rpx; */
+}
+.answer_zhengque{
+  width:530rpx;
+  height:30rpx;
+  line-height: 30rpx;
+  color:#fff;
+  margin:0 auto;
+
+}
+.icon-kehu:before { content: "&#xe610;"; }  

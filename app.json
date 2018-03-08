@@ -1,30 +1,30 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/draw/draw"
+  "pages": [
+    "pages/index/index",    
+    "pages/mine/mine",    
+    "pages/draw/draw",  
+    "pages/share/share",
+    "pages/packet/packet"    
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#e73b58",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "Soul灵魂画手-画图红包",
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
+    "backgroundColor": "#fff",
+    "selectedColor": "#fe2f5b",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "我的记录"
+        "text": "新的红包"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "余额提现"
-      },
-      {
-        "pagePath": "pages/logs/logs",
-        "text": "常见问题"
+        "pagePath": "pages/mine/mine",
+        "text": "我的账户"
       }
     ]
   }
-
 }

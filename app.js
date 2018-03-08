@@ -1,61 +1,40 @@
-const AV = require('./lib/av-weapp-min.js')
-var language = require('./utils/language.js')
-const config = require('./config.js')
-const template = require('./stencils.js')
-
+const AV = require('./lib/av-weapp-min.js');
+const config = require('./config.js');
+const language = require('./utils/language.js');
 
 AV.init({
   appId: config.appId,
-  appKey: config.appKey
-})
-
-
-var data = {
-  userInfo: null,
-  language: null,
-  systemInfo: null,
-  stencils: null,
-  userInfo: [],
-  localApi: ''
-}
-
-
+  appKey: config.appKey,
+  region: 'us'
+});
 
 //app.js
 App({
-
-  globalData: data,
   onLoad: function () {
-    console.log("App onLoad")
-
+    console.log("App onLoad");
   },
-  
   onLaunch: function () {
-
-    var systemInfo = wx.getSystemInfoSync()
+    const that = this;
+    const systemInfo = wx.getSystemInfoSync();
     if (systemInfo.language == 'zh_CN') {
-      this.globalData.language = language.zh
+      this.globalData.language = language.zh;
     } else {
-      this.globalData.language = language.en
+      this.globalData.language = language.en;
     }
-
-    this.globalData.systemInfo = systemInfo
-    var that = this
-    console.log("App OnLaunch")
+    that.globalData.systemInfo = systemInfo;
     wx.getUserInfo({
       success: function (user) {
-        // console.log(user)
-        // this.setglobalData({
-        //   userInfo :user.userInfo
-        // })
         that.globalData.userInfo = user.userInfo
       }
     })
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
+    const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    // leancloud
+    AV.User.loginWithWeapp().then(user => {
+      that.globalData.attributes = user.attributes;
+    });
 
     // 获取用户信息
     wx.getSetting({
@@ -78,7 +57,11 @@ App({
       }
     })
   },
-  
+  globalData: {
+    userInfo: [],
+    language: null,
+    systemInfo: null
+  },
   // 登录
   login: function () {
     wx.login({

@@ -1,0 +1,79 @@
+<!--pages/packet/packet.wxml-->
+<view class='container'>
+  <view class='con'>
+    <view class='topBox'style="background:url('../image/lingquBg.png') no-repeat;background-size:750rpx 544rpx;">
+      <view class='share_box'>
+        <image src='{{userInfo.avatarUrl}}'
+              mode='widthFix' class='header'></image>
+      </view>
+      <view class="share_box">
+        <view class='kouling'> {{userInfo.nickName}}</view>
+      </view>
+      <view class='ChangeHot'>
+        <view style="{{houBaoStyle==1?'display:block':'display:none'}}">
+          <view class="share_box" >
+            <view class='yuyin'><text class="iconfont icon-hongbao">发了一个语音口令  </text></view>
+          </view>
+          <view class='share_box_ju'>
+            <view class='showLing' hidden='true'>按住说出以上口令领取赏金</view>
+            <view class="moneyNum">1.00<text class='fontSize'>元</text> </view>
+          </view>
+        </view>
+        <view style="{{houBaoStyle==2?'display:block':'display:none'}}">
+          <view class="share_box" >
+            <view class='qingTing marTop'>
+              <text class="iconfont icon-bofang"> </text>
+               点击收听真心话领取赏金
+            </view>
+            <!-- <view class='yuyin'><icon></icon> 发了一个语音口令</view> -->
+          </view>
+          <view class='share_box_ju'>
+            <view class='showLing' hidden='true'>按住说出以上口令领取赏金</view>
+            <view class="moneyNum">1.00<text class='fontSize'>元</text> </view> 
+          </view>
+        </view>
+        <view style="{{houBaoStyle==3?'display:block':'display:none'}}">
+          <view class="share_box" >
+            <view class='qingTing marTop3'>长按录入你对TA想说的话</view>
+            <!-- <view class='yuyin'><icon></icon> 发了一个语音口令</view> -->
+          </view>
+          <view class='share_box_ju'>
+            <view class='answer_zhengque'>正确答案：</view>
+            <view class='showLing' hidden='true'>按住说出以上口令领取赏金</view>
+            <view class="moneyNum">1.00<text class='fontSize'>元</text> </view> 
+          </view>
+        </view>
+      </view>
+
+      <view class='share_box marginTop'>
+        <view class="caozuoShare">
+            <view class=''><text class="iconfont icon-tixian"></text> 去提现</view>
+            <view class=''><text class="iconfont icon-hongbao1"></text> 再发一个</view>
+            <view class=''><text class="iconfont icon-fenxiang"></text> 去转发</view>
+        </view>
+      </view>
+    </view>
+    <view class='hotMoneyNum'>
+        <view class='fl'>共1.00元，已领取0/1个</view>
+        <view class='fr'>投诉</view>
+    </view>
+    <view class='peopleMoney'>
+      <view class='peopleMoney_Left fl'>
+        <image src='{{userInfo.avatarUrl}}' mode='widthFix' class='header_logo'></image>
+      </view>
+      <view class='peopleMoney_center fl'>
+        <text class='people_NickName'>{{userInfo.nickName}}</text>
+        <icon></icon>
+        <view class='yuying_time'>2"</view>
+      </view>
+      <view class='peopleMoney_right fr'>
+        <view class='yuying_time_right'>
+          <view class='right_Num'>1.00元</view>
+          <view class='right_time'>2017-12-31</view>
+        </view>
+      </view>
+    </view>
+    <view class='jilu'>查看我的记录</view>
+    <view class='weilingqu'>未领取的金额，将于24小时后退还到余额</view>
+  </view>
+</view>

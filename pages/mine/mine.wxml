@@ -1,0 +1,61 @@
+<!--pages/mRecord/myRecord.wxml-->
+<view class='container'>
+  <view class='com'>
+    <view class='nav'>
+      <text class="nav_con {{mineRecod==1? 'on':''}}" data-num="1" bindtap='changeTab'>我发出的</text>
+      <text class="nav_con {{mineRecod==2? 'on':''}}" data-num="2" bindtap='changeTab'>我收到的</text>
+    </view>
+
+    <view class='content'>
+      <view class='content_top'>
+        <image src='{{userInfo.avatarUrl}}' mode='widthFix' class='header logo_center' > </image>
+        <view class='nickName' wx:if="{{mineRecod==1}}">{{userInfo.nickName}}共发出</view>
+        <view class='nickName' wx:else>{{userInfo.nickName}}共收到</view>        
+      </view>
+      <view class='content_bottom'>
+        <view class='Money_Number fl'>
+          <view class='Money_name'>金额（元）</view>
+          <view class='money_num' wx:if="{{mineRecod==1}}">{{sAmount}}</view>
+          <view class='money_num' wx:else>{{rAmount}}</view>          
+        </view>
+        <view class='Money_Number fl'>
+          <view class='Money_name'>数量（个）</view>
+          <view class='money_num' wx:if="{{mineRecod==1}}">{{sNum}}</view>
+          <view class='money_num' wx:else>{{rNum}}</view>          
+        </view>
+      </view>
+    </view>
+
+    <view class='hotPeopleDetail' style="{{mineRecod==1? 'display:block':'display:none'}}">
+      <view class='peopleBox'>
+        <view class='people'>
+          <view class='fl'>你们</view>
+          <view class='fr'>1.00元</view>
+        </view>       
+        <view class='time'>
+          <view class='fl'>12月28日 12:12</view>
+          <view class='fr'>1/3</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='hotPeopleDetail' style="{{mineRecod==2? 'display:block':'display:none'}}">  
+      <view class='peopleBox'>
+        <image src="{{userInfo.avatarUrl}}" mode='widthFix' class='people_header fl'></image>
+        <view>
+          <view class='people'>
+            <view class='fl'>你们</view>
+            <view class='fr'>1.00元</view>
+          </view>       
+          <view class='time2'>
+            <view class='fl'>12月28日 12:12</view>
+            <view class='fr'>1/3</view>
+          </view>
+        </view>
+       
+      </view>
+    </view>
+
+
+  </view>
+</view>

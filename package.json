@@ -1,0 +1,12 @@
+{
+  "name": "DrawingRedPacket",
+  "version": "1.0.0",
+  "description": "Soul灵魂画手 - 画图红包",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

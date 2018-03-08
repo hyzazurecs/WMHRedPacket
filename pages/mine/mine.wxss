@@ -1,0 +1,83 @@
+/* pages/mRecord/myRecord.wxss */
+Page{
+  background:#f3f5fa;
+}
+.nav{
+  width:750rpx;
+  height:100rpx;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  font-size:30rpx;
+}
+.nav_con{
+  line-height: 95rpx;
+}
+.on{
+  border-bottom:5rpx solid #e73b58;
+}
+.content{
+  width:563rpx;
+  height:480rpx;
+  margin: 0 auto;
+ 
+}
+.content_top{
+  widht:563rpx;
+  height:234rpx;
+  text-align: center;
+  overflow: hidden;
+}
+.logo_center{
+  display: block;
+  margin:30rpx auto;
+}
+.content_bottom{
+  height:247rpx;
+  width:563rpx;
+
+}
+.nickName{
+  font-size:30rpx;
+}
+.Money_Number{
+  width:281rpx;
+  height:197rpx;
+  padding-top:50rpx;
+  text-align: center;
+  font-size:32rpx;
+}
+.money_num{
+  line-height: 60rpx;
+  font-size:38rpx;
+  font-weight:bold;
+}
+
+.hotPeopleDetail{
+  width:750rpx;
+  height:125rpx;
+  background: #fff;
+  margin-bottom:5rpx;
+}
+.peopleBox{
+  width:700rpx;
+  margin:0 auto;
+  overflow:hidden;
+}
+.people{
+  width:700rpx;
+  font-size:26rpx;
+  height:48rpx;
+  line-height: 48rpx;
+  margin-top:25rpx;
+}
+.time{
+  width:700rpx;
+  font-size:24rpx;
+  color:#999;
+}
+.people_header{
+  width:66rpx;
+  margin-top:30rpx;
+  margin-right:20rpx;
+}
