@@ -20,6 +20,6 @@
     bindtouchend="touchEnd"/>
 
   <view class="delete-session" bindtap="handleDeleteTap">
-    <image class="delete" src="../image/delete.svg" />
+    <image class="delete" src="../../image/delete.svg" />
   </view>
 </view>

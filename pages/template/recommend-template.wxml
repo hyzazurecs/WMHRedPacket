@@ -1,5 +1,5 @@
 <template name="recommend-template">
-  <view class="recommend-wrapper" bindtap='ls'>
+  <view class="recommend-wrapper" bindtap='chooseSvg'>
     <view class="recommend-content">
       <image id="{{recommend.src}}" class="recommend-image" src="{{recommend.src}}" bindlongtap="handleImageLongTap" />
     </view>

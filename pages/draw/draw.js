@@ -130,7 +130,7 @@ Page({
         const inks = res[1][0][1]
         console.log(inks)
         const ress = achievePath(inks)
-        const results = ress.slice(0,9)
+        const results = ress.slice(0,6)
         console.log(results)
         that.setData({
           recommends: results
@@ -188,7 +188,7 @@ Page({
     arrayTime = []
   },
 
-  ls: function (e) {
+  chooseSvg: function (e) {
     this.context.clearRect(0, 0, this.data.width, this.data.height)
     console.log(e.target.id)
     this.context.draw()
