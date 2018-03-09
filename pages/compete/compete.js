@@ -10,7 +10,9 @@ var pageData = {
   height: 0,
   recommends: null,
   description: '',
-  upLoad:true
+  upLoad:true,
+  p_id: 0,
+  u_id: 0
 }
 
 let stencils = null;
@@ -34,9 +36,11 @@ Page({
     } else {
       stencils = template;
     }
-
+    console.log(options);
     this.setData({
       recommends: options['imgSrc'],
+      u_id: options['u_id'],
+      p_id: options['p_id']
     })
 
   },
@@ -73,18 +77,16 @@ Page({
 
   //
   touchStart: function (e) {
+    this.startX = e.changedTouches[0].x;
+    this.startY = e.changedTouches[0].y;
+    this.context.setStrokeStyle('#212121');
+    this.context.setLineWidth(2);
+    this.context.setLineCap('round');
+    this.context.beginPath();
 
-    this.startX = e.changedTouches[0].x
-    this.startY = e.changedTouches[0].y
-    this.context.setStrokeStyle('#212121')
-    this.context.setLineWidth(2)
-    this.context.setLineCap('round')
-    this.context.beginPath()
-
-    arrayX.push(this.startX)
-    arrayY.push(this.startY)
-    arrayTime.push(float2int(e.timeStamp))
-    
+    arrayX.push(this.startX);
+    arrayY.push(this.startY);
+    arrayTime.push(float2int(e.timeStamp));
   },
 
   touchMove: function (e) {
@@ -108,9 +110,7 @@ Page({
       upLoad:false
     })
   },
-
   touchEnd: function (e) {
-
     const options = {
       'input_type': 0,
       'requests': [{
@@ -122,14 +122,8 @@ Page({
         'ink': [[arrayX, arrayY, arrayTime]]
       }]
     }
-
-
-    var that = this;
-
-
-   
+    const that = this;
   },
-
   // 保存链接到剪切板
   handleImageLongTap: function (e) {
     wx.setClipboardData({
@@ -149,7 +143,6 @@ Page({
       }
     })
   },
-
   // 清空画布
   handleDeleteTap: function (e) {
     this.setData({
@@ -163,35 +156,27 @@ Page({
     arrayY = []
     arrayTime = []
   },
-
   chooseSvg: function (e) {
     this.context.clearRect(0, 0, this.data.width, this.data.height)
     this.context.draw();
     this.context.drawImage(e.target.id, 0, 0, 200, 200)
-
-    arrayX = []
-    arrayY = []
-    arrayTime = []
-
-    const options = app.globalData.options;
-    options.src = e.target.id;
-    options.u_id = app.globalData.attributes.username;
-    options.avatar = app.globalData.userInfo.avatarUrl;
-    options.description = this.data.description;
-    Cloud.run('newRedPacket', options).then((response) => {
-      console.log(response);
-
-      const p_id = response;
+  },
+  handleUpload: function() {
+    const that = this;
+    const options = {
+      u_id: this.data.u_id,
+      p_id: parseInt(this.data.p_id),
+      avatar: app.globalData.userInfo.avatarUrl,
+      username: app.globalData.userInfo.nickName,
+      answer: []
+    };
+    Cloud.run('newAnswer', options).then((response)=>{
       wx.navigateTo({
-        url: `../packet/packet?p_id=${p_id}`
+        url: `../packet/packet?p_id=${that.data.p_id}`
       });
     });
   }
-
-
 })
-
-
 
 function float2int(value) {
   return value | 0

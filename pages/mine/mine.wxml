@@ -26,33 +26,35 @@
       </view>
     </view>
 
-    <view class='hotPeopleDetail' style="display:block">
-      <view class='peopleBox'>
-        <view class='people'>
-          <view class='fl'>你们</view>
-          <view class='fr'>1.00元</view>
-        </view>       
-        <view class='time'>
-          <view class='fl'>12月28日 12:12</view>
-          <view class='fr'>1/3</view>
+    <view class='hotPeopleDetail' style="{{mineRecod==1?'display:block':'display:none'}}">
+      <view wx:for="{{sPacket}}">
+        <view class='peopleBox'>
+          <image src="{{item.src}}" mode='widthFix' class='people_header fl'></image>      
+          <view class='people'>
+            <view class='fl'>{{item.title}}</view>
+            <view class='fr'>{{item.leftAmount}}/{{item.amount}}</view>
+          </view>       
+          <view class='time'>
+            <view class='fr'>{{item.leftNum}}/{{item.num}}</view>
+          </view>
         </view>
       </view>
     </view>
 
-    <view class='hotPeopleDetail' style="display:block">  
-      <view class='peopleBox'>
-        <image src="{{userInfo.avatarUrl}}" mode='widthFix' class='people_header fl'></image>
-        <view>
-          <view class='people'>
-            <view class='fl'>你们</view>
-            <view class='fr'>1.00元</view>
-          </view>       
-          <view class='time2'>
-            <view class='fl'>12月28日 12:12</view>
-            <view class='fr'>1/3</view>
+    <view class='hotPeopleDetail' style="{{mineRecod==2?'display:block':'display:none'}}">  
+      <view wx:for="{{rPacket}}">
+        <view class='peopleBox'>
+          <image src="{{item.src}}" mode='widthFix' class='people_header fl'></image>
+          <view>
+            <view class='people'>
+              <view class='fl'>{{item.title}}</view>
+              <view class='fr'>{{item.rAmount}}/{{item.amount}}</view>
+            </view>       
+            <view class='time2'>
+              <view class='fl'>similarity: {{item.similarity}}</view>
+            </view>
           </view>
         </view>
-       
       </view>
     </view>
   </view>

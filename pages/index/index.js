@@ -37,7 +37,7 @@ Page({
   NumberInput: function (e) {
     const that = this;
     that.setData({
-      num: e.detail.value,
+      num: e.detail.value
     });
   },
   jubenAnswerInput: function (e) {

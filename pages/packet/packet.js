@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    owner: false,
+    display: true,
+    p_id: 0,
     userInfo:[],
     username: '辉哥哥',
     avatar: '../image/mine-1.png',
@@ -17,8 +20,8 @@ Page({
     leftAmount: 0,
     title: 'Hello World!',
     answer: [],
-    imhSrc:''
-    
+    src: '../image/mine-1.png',
+    u_id: 0
   },
 
   /**
@@ -26,29 +29,30 @@ Page({
    */
   onLoad: function (options) {
     const that = this;
+    const p_id = parseInt(options['p_id']);    
     that.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      p_id: p_id
     });
-    console.log(options['p_id'])
-    const p_id = parseInt(options['p_id']);
-    console.log
-    this.data.imgSrc = options['img_url']
-    
-   
     User.loginWithWeapp().then((user) => {
       const u_id = user.attributes.username;
       Cloud.run('queryRedPacket', {p_id: p_id, u_id: u_id}).then((response)=>{
         let packet = response.packet;
         that.setData({
+          u_id: u_id,
+          owner: response.owner,
+          display: response.display,
           amount: packet.amount,
           num: packet.num,
           leftNum: packet.leftNum,
           leftAmount: packet.leftAmount,
           titie: packet.title,
-          answer: packet.answer,
+          answer: packet.answers,
           avatar: packet.avatar,
-          username: packet.username
+          username: packet.username,
+          src: packet.src
         })
+        console.log(response.display);
       });
     });
   },
@@ -110,13 +114,17 @@ Page({
     });
   },
 
-  toCompete: function () {
-    console.log(this.data.imgSrc)
+  wantShare: function () {
+    const that = this;
     wx.navigateTo({
-      url: `../compete/compete?imgSrc=${this.data.imgSrc}`,
-     
+      url: `../share/share?p_id${that.data.p_id}&src=${that.data.src}`
+    });
+  },
+
+  toCompete: function () {
+    const that = this;
+    wx.navigateTo({
+      url: `../compete/compete?u_id=${that.data.u_id}&p_id=${that.data.p_id}&imgSrc=${that.data.src}`,
     });
   }
-
-  
 })

@@ -15,7 +15,9 @@ Page({
     sAmount: 0,
     sNum: 0,
     rp_ids: [],
-    sp_ids: []
+    sp_ids: [],
+    rPacket: [],
+    sPacket: []
   },
 
   /**
@@ -23,21 +25,31 @@ Page({
    */
   onLoad: function (options) {
     const that = this;
-    const u_id = app.globalData.attributes.username;
-    
-    AV.Cloud.run('fetchUser', {u_id: u_id}).then((response)=>{
-        let {rAmount, rNum, sAmount, sNum, rp_ids, sp_ids} = response;
-        that.setData({
-          rAmount: rAmount,
-          rNum: rNum,
-          sAmount: sAmount,
-          sNum: sNum,
-          rp_ids: rp_ids,
-          sp_ids: sp_ids,
-          userInfo:app.globalData.userInfo,
-        });
+    AV.User.loginWithWeapp().then(user => {
+      let u_id = user.attributes.username;
+      AV.Cloud.run('fetchUser', {u_id: u_id}).then((response)=>{
+          let {rAmount, rNum, sAmount, sNum, rp_ids, sp_ids} = response;
+          that.setData({
+            rAmount: rAmount,
+            rNum: rNum,
+            sAmount: sAmount,
+            sNum: sNum,
+            rp_ids: rp_ids,
+            sp_ids: sp_ids,
+            userInfo:app.globalData.userInfo,
+          });
+          AV.Cloud.run('myRcvRedPacket', {rp_ids: rp_ids, u_id: u_id}).then((response)=>{
+            that.setData({
+              rPacket: response
+            })
+          });
+          AV.Cloud.run('mySendRedPacket', {sp_ids: sp_ids, u_id: u_id}).then((response)=>{
+            that.setData({
+              sPacket: response
+            })
+          });
+      });
     });
-    
   },
   // tab 切换函数
   changeTab: function(e){

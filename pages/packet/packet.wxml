@@ -3,7 +3,7 @@
   <view class='con'>
     <view class='topBox'style="background:url('../image/lingquBg.png') no-repeat;background-size:750rpx 544rpx;">
       <view class='share_box'>
-        <image src='{{avatar}}'
+        <image src='{{src}}'
               mode='widthFix' class='header'></image>
       </view>
       <view class="share_box">
@@ -23,7 +23,7 @@
       <view class='share_box marginTop'>
         <view class="caozuoShare">
             <view class=''><text class="iconfont icon-hongbao1"></text> 我也要发 </view>
-            <view class=''><text class="iconfont icon-fenxiang"></text> 马上转发 </view>
+            <view class='' bindtap="wantShare"><text class="iconfont icon-fenxiang"></text> 马上转发 </view>
         </view>
       </view>
     </view>
@@ -42,16 +42,14 @@
       </view>
       <view class='peopleMoney_right fr'>
         <view class='yuying_time_right'>
-          <view class='right_Num'>{{item.avatar}}</view>
+          <view class='right_Num'>{{item.amount}}</view>
           <view class='right_time'>2019-03-09</view>
         </view>
       </view>
     </view>
     </view>
-    <view class="goto">
-        <view url='../compete/compete' bindtap='toCompete'>开始挑战</view>
-    </view>
-    <view url="../mine/mine"  class='jilu' bindtap="toMine">查看我的记录</view>
+    <view class='jilu' bindtap="toCompete" wx:if="{{display}}">开始挑战</view>    
+    <view class='jilu' bindtap="toMine">查看我的记录</view>
     <view class='weilingqu'>未领取的金额，将于24小时后退还到余额</view>
   </view>
 </view>

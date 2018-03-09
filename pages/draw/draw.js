@@ -113,9 +113,7 @@ Page({
       }]
     }
 
-
-    var that = this;
-
+    const that = this;
 
     Cloud.run('matchDraw', options).then(function (res) {
       // const array = JSON.parse(res)
@@ -194,18 +192,16 @@ Page({
     const options = app.globalData.options;
     options.src = e.target.id;
     options.u_id = app.globalData.attributes.username;
+    options.username = app.globalData.userInfo.nickName;
     options.avatar = app.globalData.userInfo.avatarUrl;
     options.description = this.data.description;
     Cloud.run('newRedPacket', options).then((response)=>{
-    console.log(e.target.id);
-      
         const p_id = response;
         wx.navigateTo({
-          url: `../packet/packet?p_id=${p_id}&img_url=${e.target.id}`
+          url: `../packet/packet?p_id=${p_id}`
         });
     });
   }
-
 
 })
 
