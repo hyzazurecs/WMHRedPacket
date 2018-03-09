@@ -9,7 +9,8 @@ var pageData = {
   width: 0,
   height: 0,
   recommends: null,
-  description: ''
+  description: '',
+  upLoad:true
 }
 
 let stencils = null;
@@ -83,6 +84,7 @@ Page({
     arrayX.push(this.startX)
     arrayY.push(this.startY)
     arrayTime.push(float2int(e.timeStamp))
+    
   },
 
   touchMove: function (e) {
@@ -100,8 +102,11 @@ Page({
 
     this.startX = curX;
     this.startY = curY;
-
     this.context.draw(true);
+
+    this.setData({
+      upLoad:false
+    })
   },
 
   touchEnd: function (e) {

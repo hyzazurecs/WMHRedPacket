@@ -17,7 +17,9 @@
     bindtouchstart="touchStart" 
     bindtouchmove="touchMove"
     bindtouchend="touchEnd"/>
-
+   <view class="upload-session" bindtap="handleDeleteTap">
+       <button class="upLoadPic" disabled='{{upLoad}}'>提交</button>
+   </view>
   <view class="delete-session" bindtap="handleDeleteTap">
     <image class="delete" src="../image/delete.svg" />
   </view>
