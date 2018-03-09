@@ -1,4 +1,4 @@
-/* pages/mRecord/myRecord.wxss */
+/* pages/mine/mine.wxss */
 Page{
   background:#f3f5fa;
 }

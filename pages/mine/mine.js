@@ -1,4 +1,4 @@
-// pages/mRecord/myRecord.js
+// pages/mine/mine.js
 var app = getApp();
 const AV = require('../../lib/av-weapp-min.js');
 
@@ -24,6 +24,7 @@ Page({
   onLoad: function (options) {
     const that = this;
     const u_id = app.globalData.attributes.username;
+    
     AV.Cloud.run('fetchUser', {u_id: u_id}).then((response)=>{
         let {rAmount, rNum, sAmount, sNum, rp_ids, sp_ids} = response;
         that.setData({
@@ -36,6 +37,7 @@ Page({
           userInfo:app.globalData.userInfo,
         });
     });
+    
   },
   // tab 切换函数
   changeTab: function(e){

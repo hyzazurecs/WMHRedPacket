@@ -4,7 +4,8 @@
     "pages/mine/mine",    
     "pages/draw/draw",  
     "pages/share/share",
-    "pages/packet/packet"    
+    "pages/packet/packet",
+    "pages/compete/compete"    
   ],
   "window": {
     "backgroundTextStyle": "light",
