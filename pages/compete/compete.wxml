@@ -1,0 +1,24 @@
+
+
+
+<view class="root">
+
+  <view class="recommend-session recommend-session-spacing">
+        <view class="recommend-settion-content">
+         <view class="recommend-wrapper">
+              <view class="recommend-content">
+                  <image id="{{recommends}}"             class="recommend-image" src="{{recommends}}"      />
+          </view>
+  </view>
+        </view>
+  </view>
+
+  <canvas style="width: {{width}}px; height: {{height - 120 }}px" canvas-id="{{canvasId}}" class="canvas" disable-scroll="true" 
+    bindtouchstart="touchStart" 
+    bindtouchmove="touchMove"
+    bindtouchend="touchEnd"/>
+
+  <view class="delete-session" bindtap="handleDeleteTap">
+    <image class="delete" src="../image/delete.svg" />
+  </view>
+</view>
