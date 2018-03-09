@@ -117,7 +117,7 @@ Page({
 
     var that = this
     console.log("kakakakaka")
-
+  
     Cloud.run('matchDraw', options).then(function (res) {
       console.log("sssss")
       console.log(res[0])
@@ -198,7 +198,16 @@ Page({
     arrayX = []
     arrayY = []
     arrayTime = []
-  }
+
+    Cloud.run('newRedPacket').then(function (res) {
+      console.log("sssss")
+      console.log(res)
+      // const array = JSON.parse(res)
+            
+    }, function (error) {
+      console.log(error)
+    })
+  } 
 
 })
 
