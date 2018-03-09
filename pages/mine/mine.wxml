@@ -1,4 +1,4 @@
-<!--pages/mRecord/myRecord.wxml-->
+<!--pages/mine/mine.wxml-->
 <view class='container'>
   <view class='com'>
     <view class='nav'>
@@ -26,7 +26,7 @@
       </view>
     </view>
 
-    <view class='hotPeopleDetail' style="{{mineRecod==1? 'display:block':'display:none'}}">
+    <view class='hotPeopleDetail' style="display:block">
       <view class='peopleBox'>
         <view class='people'>
           <view class='fl'>你们</view>
@@ -39,7 +39,7 @@
       </view>
     </view>
 
-    <view class='hotPeopleDetail' style="{{mineRecod==2? 'display:block':'display:none'}}">  
+    <view class='hotPeopleDetail' style="display:block">  
       <view class='peopleBox'>
         <image src="{{userInfo.avatarUrl}}" mode='widthFix' class='people_header fl'></image>
         <view>
@@ -55,7 +55,5 @@
        
       </view>
     </view>
-
-
   </view>
 </view>

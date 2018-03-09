@@ -1,5 +1,7 @@
 // pages/packet/packet.js
 var app = getApp();
+const {Cloud, User} = require('../../lib/av-weapp-min');
+
 Page({
 
   /**
@@ -7,18 +9,41 @@ Page({
    */
   data: {
     userInfo:[],
-    houBaoStyle:1
+    username: '辉哥哥',
+    avatar: '../image/mine-1.png',
+    amount: 0,
+    num: 0,
+    leftNum: 0,
+    leftAmount: 0,
+    title: 'Hello World!',
+    answer: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that  = this;
+    const that = this;
     that.setData({
-      userInfo: app.globalData.userInfo,
-      houBaoStyle: options.houBaoStyle,
-    })
+      userInfo: app.globalData.userInfo
+    });
+    const p_id = parseInt(options['p_id']);
+    User.loginWithWeapp().then((user) => {
+      const u_id = user.attributes.username;
+      Cloud.run('queryRedPacket', {p_id: p_id, u_id: u_id}).then((response)=>{
+        let packet = response.packet;
+        that.setData({
+          amount: packet.amount,
+          num: packet.num,
+          leftNum: packet.leftNum,
+          leftAmount: packet.leftAmount,
+          titie: packet.title,
+          answer: packet.answer,
+          avatar: packet.avatar,
+          username: packet.username
+        })
+      });
+    });
   },
   toshareChat:function(){
     
@@ -70,5 +95,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  toMine: function () {
+    wx.switchTab({
+      url: '../mine/mine'
+    });
   }
 })

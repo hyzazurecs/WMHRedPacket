@@ -16,8 +16,8 @@
 }
 
 .recommend-content .recommend-image {
-  width: 175rpx;
-  height: 260rpx;
+  width: 150rpx;
+  height: 150rpx;
 }
 
 .recommend-content .recommend-title {

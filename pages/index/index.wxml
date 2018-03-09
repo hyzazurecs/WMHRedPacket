@@ -15,34 +15,26 @@
             <image src='{{userInfo.avatarUrl}}' mode='widthFix' class='header_size'></image>
           </view>
           <view class="setHotMoney">
-          <!--口令红包  -->
             <view class='setHotMoney_detail1' 
                   style="display:block">
               <view class='setHotMoney_name1 fl' >红包标题</view>
               <input type='text' placeholder='谢谢老板' class='hotInput1 fr' bindinput='titleInput'></input>
             </view>
-
-            <view class='shuoming'>
-              {{description}}
-            </view>
+            <view class='shuoming'> {{description}} </view>
             <view class='setHotMoney_detail'>
               <view class='setHotMoney_name fl' >赏金（元）</view>
               <input type='number' placeholder='填写金额' class='hotInput fr'
                      bindinput='MoneyInput'></input>
             </view>
             <view class='setHotMoney_detail'>
-              <view class='setHotMoney_name fl' >数量（个）</view>
+              <view class='setHotMoney_name fl'>数量（个）</view>
               <input type='number' placeholder='填写数量' class='hotInput fr'
                      bindinput='NumberInput'></input>
             </view>
- 
             <view class="server">需支付￥0.0服务费,优先使用余额</view>
-            <navigator url="../draw/draw"
-            class='VoiceBtn' bindtap='toShare'>开始绘画</navigator>
+            <view class='VoiceBtn' bindtap="toDraw">开始绘画</view>
           </view>
-
         </view>
     </view>
-
  </view>
 </view>

@@ -1,5 +1,4 @@
 // pages/draw/draw.js
-
 const { Cloud } = require('../../lib/av-weapp-min.js')
 const template = require('../../stencils.js')
 
@@ -9,10 +8,11 @@ var pageData = {
   canvasId: 'draw-canvas',
   width: 0,
   height: 0,
-  recommends: null
+  recommends: null,
+  description: ''
 }
 
-let stencils = null
+let stencils = null;
 
 var arrayX = []
 var arrayY = []
@@ -27,12 +27,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     // get stencils
     if (app.globalData.stencils) {
-      stencils = app.globalData.stencils
+      stencils = app.globalData.stencils;
     } else {
-      stencils = template
+      stencils = template;
     }
   },
 
@@ -56,7 +55,7 @@ Page({
       height: app.globalData.systemInfo.windowHeight
     })
 
-    this.context = wx.createCanvasContext(this.data.canvasId)
+    this.context = wx.createCanvasContext(this.data.canvasId);
   },
 
   /**
@@ -88,17 +87,16 @@ Page({
 
     arrayX.push(curX)
     arrayY.push(curY)
-    arrayTime.push(float2int(e.timeStamp))
+    arrayTime.push(float2int(e.timeStamp));
 
-    this.context.moveTo(this.startX, this.startY)
-    this.context.lineTo(curX, curY)
-    this.context.stroke()
+    this.context.moveTo(this.startX, this.startY);
+    this.context.lineTo(curX, curY);
+    this.context.stroke();
 
     this.startX = curX;
     this.startY = curY;
 
-    this.context.draw(true)
-
+    this.context.draw(true);
   },
 
   touchEnd: function (e) {
@@ -115,20 +113,17 @@ Page({
       }]
     }
 
-    var that = this
-    console.log("kakakakaka")
+    var that = this;
 
     Cloud.run('matchDraw', options).then(function (res) {
-      console.log("sssss")
-      console.log(res[0])
       // const array = JSON.parse(res)
       const flag = res[0]
-      
-      
-      
+        
       if (flag == 'SUCCESS') {
         const inks = res[1][0][1]
-        console.log(inks)
+        that.setData({
+          description: inks
+        })
         const ress = achievePath(inks)
         const results = ress.slice(0,6)
         console.log(results)
@@ -137,7 +132,6 @@ Page({
         })
 
         if (!initial) {
-          console.log("lalalal")
           wx.showToast({
             title: app.globalData.language.longPressToast,
             duration: 2000,
@@ -147,8 +141,6 @@ Page({
           })
         }
       }
-      
-
     }, function (error) {
       console.log(error)
     })
@@ -178,7 +170,7 @@ Page({
   handleDeleteTap: function (e) {
     this.setData({
       recommends: null
-    })
+    });
 
     this.context.clearRect(0, 0, this.data.width, this.data.height)
     this.context.draw()
@@ -190,14 +182,25 @@ Page({
 
   chooseSvg: function (e) {
     this.context.clearRect(0, 0, this.data.width, this.data.height)
-    console.log(e.target.id)
-    this.context.draw()
+    this.context.draw();
     this.context.drawImage(e.target.id,0,0,200,200)
-    console.log("a")
 
     arrayX = []
     arrayY = []
     arrayTime = []
+
+    const options = app.globalData.options;
+    options.src = e.target.id;
+    options.u_id = app.globalData.attributes.username;
+    options.avatar = app.globalData.userInfo.avatarUrl;
+    options.description = this.data.description;
+    Cloud.run('newRedPacket', options).then((response)=>{
+        console.log(response);
+        const p_id = response.p_id;
+        wx.navigateTo({
+          url: `../packet/packet?p_id=${p_id}`
+        });
+    });
   }
 
 })
